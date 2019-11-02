@@ -1,0 +1,58 @@
+{
+  "name": "@futoin/msgbot",
+  "version": "0.0.1",
+  "description": "FutoIn Message Bot Reference Implementation",
+  "main": "lib/main.js",
+  "files": [
+    "examples/",
+    "lib/",
+    "*Face.js",
+    "*Service.js",
+    "futoin.json"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/futoin/core-js-ri-msgbot.git"
+  },
+  "keywords": [
+    "futoin",
+    "bot",
+    "agent",
+    "chat"
+  ],
+  "author": {
+    "name": "Andrey Galkin",
+    "email": "andrey@futoin.org"
+  },
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/futoin/core-js-ri-msgbot/issues",
+    "email": "support@futoin.org"
+  },
+  "devDependencies": {
+    "futoin-asyncsteps": "^2.4.3",
+    "futoin-executor": "^2.3.2",
+    "futoin-invoker": "^2.4.1",
+    "grunt": "^1.0.4",
+    "grunt-eslint": "^22.0.0",
+    "grunt-jsdoc-to-markdown": "^5.0.0",
+    "grunt-simple-nyc": "^3.0.0",
+    "grunt-text-replace": "^0.4.0",
+    "mocha": "^6.2.2"
+  },
+  "dependencies": {
+    "@futoin/specs": ">=2019.1102.4",
+    "moment": "^2.24.0"
+  },
+  "peerDependencies": {
+    "futoin-asyncsteps": "^2.4.3",
+    "futoin-executor": "^2.3.2",
+    "futoin-invoker": "^2.4.1"
+  }
+}
