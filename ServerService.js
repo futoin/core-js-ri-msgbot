@@ -19,19 +19,26 @@
  * limitations under the License.
  */
 
-const FACE_PREFIX = '#msgbot.';
+const PushHandlerService = require( './PushHandlerService' );
+const ServerFace = require( './ServerFace' );
 
-exports = module.exports = {
-    specDirs : require( '@futoin/specs' ).SPEC_DIRS,
+/**
+ * Server Service
+ */
+class ServerService extends PushHandlerService {
+    static get IFACE_IMPL() {
+        return ServerFace;
+    }
 
-    PING_VERSION: '1.0',
-    FTN22_VERSION: '0.2',
+    /**
+     * Register futoin.msgbot.router interface with Executor
+     * @alias ServerService.register
+     * @param {AsyncSteps} asi - steps interface
+     * @param {Executor} executor - executor instance
+     * @param {object} options - implementation defined options
+     * @param {Executor} options.scope=main.globalScope
+     * @returns {ServerService} instance
+     */
+}
 
-    FACE_PREFIX,
-    ROUTER_FACE : `${FACE_PREFIX}router`,
-    PUSH_FACE : `${FACE_PREFIX}push`,
-    SERVER_FACE_PREFIX : `${FACE_PREFIX}server.`,
-};
-
-Object.freeze( exports );
-
+module.exports = ServerService;

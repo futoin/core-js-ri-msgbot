@@ -8,6 +8,8 @@
     "lib/",
     "*Face.js",
     "*Service.js",
+    "*Helpers.js",
+    "ServiceApp.js",
     "futoin.json"
   ],
   "engines": {
@@ -36,6 +38,7 @@
     "email": "support@futoin.org"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "futoin-asyncsteps": "^2.4.3",
     "futoin-executor": "^2.3.2",
     "futoin-invoker": "^2.4.1",
@@ -47,8 +50,7 @@
     "mocha": "^6.2.2"
   },
   "dependencies": {
-    "@futoin/specs": ">=2019.1102.4",
-    "moment": "^2.24.0"
+    "@futoin/specs": ">=2019.1104.0"
   },
   "peerDependencies": {
     "futoin-asyncsteps": "^2.4.3",

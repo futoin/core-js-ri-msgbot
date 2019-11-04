@@ -19,19 +19,26 @@
  * limitations under the License.
  */
 
-const FACE_PREFIX = '#msgbot.';
+const BaseService = require( './lib/BaseService' );
+const ReactHandlerFace = require( './ReactHandlerFace' );
 
-exports = module.exports = {
-    specDirs : require( '@futoin/specs' ).SPEC_DIRS,
+/**
+ * React Handler Service base
+ */
+class ReactHandlerService extends BaseService {
+    static get IFACE_IMPL() {
+        return ReactHandlerFace;
+    }
 
-    PING_VERSION: '1.0',
-    FTN22_VERSION: '0.2',
+    /**
+     * Register futoin.msgbot.react interface with Executor
+     * @alias ReactHandlerService.register
+     * @param {AsyncSteps} asi - steps interface
+     * @param {Executor} executor - executor instance
+     * @param {object} options - implementation defined options
+     * @param {Executor} options.scope=main.globalScope
+     * @returns {ReactHandlerService} instance
+     */
+}
 
-    FACE_PREFIX,
-    ROUTER_FACE : `${FACE_PREFIX}router`,
-    PUSH_FACE : `${FACE_PREFIX}push`,
-    SERVER_FACE_PREFIX : `${FACE_PREFIX}server.`,
-};
-
-Object.freeze( exports );
-
+module.exports = ReactHandlerService;
