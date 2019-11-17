@@ -45,12 +45,12 @@
     "grunt": "^1.0.4",
     "grunt-eslint": "^22.0.0",
     "grunt-jsdoc-to-markdown": "^5.0.0",
-    "grunt-simple-nyc": "^3.0.0",
+    "grunt-simple-nyc": "^3.0.1",
     "grunt-text-replace": "^0.4.0",
     "mocha": "^6.2.2"
   },
   "dependencies": {
-    "@futoin/log": "^1.0.0",
+    "@futoin/log": "^1.1.0",
     "@futoin/specs": ">=2019.1104.0"
   },
   "peerDependencies": {

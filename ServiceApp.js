@@ -22,7 +22,7 @@
 const AdvancedCCM = require( 'futoin-invoker/AdvancedCCM' );
 const Executor = require( 'futoin-executor/Executor' );
 
-const ConsoleFace = require( '@futoin/log/ConsoleFace' );
+const { initFace } = require( '@futoin/log' );
 
 const {
     ROUTER_FACE,
@@ -152,7 +152,7 @@ class ServiceApp {
         try {
             this.ccm().log();
         } catch ( _ ) {
-            ConsoleFace.register( asi, this.ccm(), options );
+            initFace( asi, this.ccm(), options );
         }
     }
 
