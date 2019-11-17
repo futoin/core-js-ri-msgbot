@@ -22,6 +22,8 @@
 const AdvancedCCM = require( 'futoin-invoker/AdvancedCCM' );
 const Executor = require( 'futoin-executor/Executor' );
 
+const ConsoleFace = require( '@futoin/log/ConsoleFace' );
+
 const {
     ROUTER_FACE,
     PUSH_FACE,
@@ -93,9 +95,9 @@ class ServiceApp {
             PushHandlerFace.register( asi, ccm, PUSH_FACE, executor, null, options );
         } );
 
-        asi.add( ( asi ) => this._register_uuidsvc( asi ) );
-        asi.add( ( asi ) => this._register_handlers( asi ) );
-        asi.add( ( asi ) => this._register_servers( asi ) );
+        asi.add( ( asi ) => this._register_logsvc( asi, options ) );
+        asi.add( ( asi ) => this._register_handlers( asi, options ) );
+        asi.add( ( asi ) => this._register_servers( asi, options ) );
     }
 
     /**
@@ -141,25 +143,38 @@ class ServiceApp {
     }
 
     /**
-     * Override to register custom UUID service
+     * Override to register custom log service
      * @virtual
      * @param {AsyncSteps} asi - AsyncSteps interface
+     * @param {object} options={} - options
      */
-    _register_uuidsvc( asi ) {}
+    _register_logsvc( asi, options ) {
+        try {
+            this.ccm().log();
+        } catch ( _ ) {
+            ConsoleFace.register( asi, this.ccm(), options );
+        }
+    }
 
     /**
      * Override to register custom business logic.
      * @virtual
      * @param {AsyncSteps} asi - AsyncSteps interface
+     * @param {object} options={} - options
      */
-    _register_handlers( asi ) {}
+    _register_handlers( asi, options ) {
+        void options;
+    }
 
     /**
      * Override to register servers.
      * @virtual
      * @param {AsyncSteps} asi - AsyncSteps interface
+     * @param {object} options={} - options
      */
-    _register_servers( asi ) {}
+    _register_servers( asi, options ) {
+        void options;
+    }
 }
 
 module.exports = ServiceApp;

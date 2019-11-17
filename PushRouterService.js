@@ -37,13 +37,20 @@ class PushRouterService extends BaseService {
     pushMessage( asi, req ) {
         const { msg } = req.params();
         const { server } = msg;
+        const ccm = req.ccm();
         const srv_face_name = `${SERVER_FACE_PREFIX}${server}`;
+
+        ccm.log().debug(
+            `PushRouterService: ${msg.server}:${msg.channel || ''}:` +
+            `${msg.recipient || ''} ${msg.payload}`
+        );
 
         let iface;
 
         try {
-            iface = req.ccm().iface( srv_face_name );
+            iface = ccm.iface( srv_face_name );
         } catch ( _ ) {
+            ccm.log().error( `PushRouterService: server not found "${server}"` );
             asi.error( 'UnknownServer', server );
         }
 

@@ -50,6 +50,7 @@
     "mocha": "^6.2.2"
   },
   "dependencies": {
+    "@futoin/log": "^1.0.0",
     "@futoin/specs": ">=2019.1104.0"
   },
   "peerDependencies": {

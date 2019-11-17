@@ -66,7 +66,9 @@ class MockHandler extends CommandRouterService {
     }
 }
 
-
+const NOLOG_OPTIONS = {
+    console: { log: () => {} },
+};
 
 describe( 'Registration Test', function() {
     const pairs = {
@@ -105,7 +107,7 @@ describe( 'Registration Test', function() {
 
 describe( 'PushRouterService', function() {
     it( 'should route push message', $as_test( asi => {
-        const app = new ServiceApp( asi );
+        const app = new ServiceApp( asi, NOLOG_OPTIONS );
         const ccm = app.ccm();
         const exec1 = app.newExecutor();
         const exec2 = app.newExecutor();
@@ -137,7 +139,7 @@ describe( 'PushRouterService', function() {
 
     it( 'should fail on invalid server', $as_test(
         asi => {
-            const app = new ServiceApp( asi );
+            const app = new ServiceApp( asi, NOLOG_OPTIONS );
             asi.add( asi => {
                 app.ccm().iface( PUSH_FACE ).pushMessage( asi, {
                     server: '01234567890123456789ab',
@@ -174,12 +176,12 @@ describe( 'CommandRouterService', function() {
     };
 
     it( 'should work with no registrations', $as_test( asi => {
-        const app = new ServiceApp( asi );
+        const app = new ServiceApp( asi, NOLOG_OPTIONS );
         common_test( asi, app );
     } ) );
 
     it( 'should correctly register', $as_test( asi => {
-        const app = new ServiceApp( asi );
+        const app = new ServiceApp( asi, NOLOG_OPTIONS );
         const ccm = app.ccm();
         const exec1 = app.newExecutor();
         CommandRouterService.register( asi, exec1 );
@@ -199,7 +201,7 @@ describe( 'CommandRouterService', function() {
 
     it( 'should detected repeated registration on command', $as_test(
         asi => {
-            const app = new ServiceApp( asi );
+            const app = new ServiceApp( asi, NOLOG_OPTIONS );
             const ccm = app.ccm();
             const exec1 = app.newExecutor();
             CommandRouterService.register( asi, exec1 );
@@ -228,7 +230,7 @@ describe( 'CommandRouterService', function() {
 
     it( 'should detected repeated registration on event', $as_test(
         asi => {
-            const app = new ServiceApp( asi );
+            const app = new ServiceApp( asi, NOLOG_OPTIONS );
             const ccm = app.ccm();
             const exec1 = app.newExecutor();
             CommandRouterService.register( asi, exec1 );
@@ -257,7 +259,7 @@ describe( 'CommandRouterService', function() {
 
     it( 'should detected repeated registration on catch all', $as_test(
         asi => {
-            const app = new ServiceApp( asi );
+            const app = new ServiceApp( asi, NOLOG_OPTIONS );
             const ccm = app.ccm();
             const exec1 = app.newExecutor();
             CommandRouterService.register( asi, exec1 );
@@ -286,7 +288,7 @@ describe( 'CommandRouterService', function() {
 
     it( 'should detected unknown interface on registration', $as_test(
         asi => {
-            const app = new ServiceApp( asi );
+            const app = new ServiceApp( asi, NOLOG_OPTIONS );
             asi.add( ( asi ) => {
                 app.ccm().iface( ROUTER_FACE ).registerHandler(
                     asi,
@@ -306,7 +308,7 @@ describe( 'CommandRouterService', function() {
 
     it( 'should detected not registered interface', $as_test(
         asi => {
-            const app = new ServiceApp( asi );
+            const app = new ServiceApp( asi, NOLOG_OPTIONS );
             asi.add( ( asi ) => {
                 app.ccm().iface( ROUTER_FACE ).unRegisterHandler(
                     asi,
@@ -323,7 +325,7 @@ describe( 'CommandRouterService', function() {
 
     it( 'should work in register/unregister cycle', $as_test(
         asi => {
-            const app = new ServiceApp( asi );
+            const app = new ServiceApp( asi, NOLOG_OPTIONS );
             const ccm = app.ccm();
             const exec1 = app.newExecutor();
             const exec2 = app.newExecutor();
@@ -386,7 +388,7 @@ describe( 'CommandRouterService', function() {
 describe( 'ServerHelpers', function() {
     let app;
     before( $as_test( asi => {
-        app = new ServiceApp( asi );
+        app = new ServiceApp( asi, NOLOG_OPTIONS );
         const ccm = app.ccm();
         const exec1 = app.newExecutor();
         const svc1 = MockServer.register( asi, exec1 );

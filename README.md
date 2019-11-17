@@ -324,9 +324,9 @@ registration functions.
     * [.executor()](#ServiceApp+executor) ⇒ <code>Executor</code>
     * [.close([done])](#ServiceApp+close)
     * [.newExecutor()](#ServiceApp+newExecutor) ⇒ <code>Executor</code>
-    * *[._register_uuidsvc(asi)](#ServiceApp+_register_uuidsvc)*
-    * *[._register_handlers(asi)](#ServiceApp+_register_handlers)*
-    * *[._register_servers(asi)](#ServiceApp+_register_servers)*
+    * *[._register_logsvc(asi, options)](#ServiceApp+_register_logsvc)*
+    * *[._register_handlers(asi, options)](#ServiceApp+_register_handlers)*
+    * *[._register_servers(asi, options)](#ServiceApp+_register_servers)*
 
 <a name="new_ServiceApp_new"></a>
 
@@ -377,38 +377,41 @@ services.
 
 **Kind**: instance method of [<code>ServiceApp</code>](#ServiceApp)  
 **Returns**: <code>Executor</code> - instance  
-<a name="ServiceApp+_register_uuidsvc"></a>
+<a name="ServiceApp+_register_logsvc"></a>
 
-### *serviceApp.\_register\_uuidsvc(asi)*
-Override to register custom UUID service
+### *serviceApp.\_register\_logsvc(asi, options)*
+Override to register custom log service
 
 **Kind**: instance abstract method of [<code>ServiceApp</code>](#ServiceApp)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| asi | <code>AsyncSteps</code> | AsyncSteps interface |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| asi | <code>AsyncSteps</code> |  | AsyncSteps interface |
+| options | <code>object</code> | <code>{}</code> | options |
 
 <a name="ServiceApp+_register_handlers"></a>
 
-### *serviceApp.\_register\_handlers(asi)*
+### *serviceApp.\_register\_handlers(asi, options)*
 Override to register custom business logic.
 
 **Kind**: instance abstract method of [<code>ServiceApp</code>](#ServiceApp)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| asi | <code>AsyncSteps</code> | AsyncSteps interface |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| asi | <code>AsyncSteps</code> |  | AsyncSteps interface |
+| options | <code>object</code> | <code>{}</code> | options |
 
 <a name="ServiceApp+_register_servers"></a>
 
-### *serviceApp.\_register\_servers(asi)*
+### *serviceApp.\_register\_servers(asi, options)*
 Override to register servers.
 
 **Kind**: instance abstract method of [<code>ServiceApp</code>](#ServiceApp)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| asi | <code>AsyncSteps</code> | AsyncSteps interface |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| asi | <code>AsyncSteps</code> |  | AsyncSteps interface |
+| options | <code>object</code> | <code>{}</code> | options |
 
 <a name="BaseFace"></a>
 

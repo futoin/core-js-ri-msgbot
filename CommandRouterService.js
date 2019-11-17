@@ -51,6 +51,7 @@ class CommandRouterService extends ReactHandlerService {
         try {
             req.ccm().iface( ccm_name );
         } catch( _ ) {
+            req.ccm().log().error( `CommandRouter: not found ${ccm_name}` );
             asi.error( 'UnknownInterface', ccm_name );
         }
 
@@ -77,6 +78,7 @@ class CommandRouterService extends ReactHandlerService {
             add_helper( this._catch_all );
         }
 
+        req.ccm().log().debug( `CommandRouter: router register ${ccm_name}` );
         req.result( true );
     }
 
@@ -103,9 +105,11 @@ class CommandRouterService extends ReactHandlerService {
         remove_helper( this._catch_all );
 
         if ( !removed ) {
+            req.ccm().log().error( `CommandRouter: not registered ${ccm_name}` );
             asi.error( 'NotRegistered', ccm_name );
         }
 
+        req.ccm().log().debug( `CommandRouter: unregister ${ccm_name}` );
         req.result( true );
     }
 
@@ -113,6 +117,10 @@ class CommandRouterService extends ReactHandlerService {
         const { msg } = req.params();
         const { payload } = msg;
         const ccm = req.ccm();
+
+        ccm.log().debug(
+            `CommandRouter:M ${msg.server}:${msg.channel || ''}:${msg.sender} ${payload}`
+        );
 
         for ( let cn of this._catch_all ) {
             // NOTE: makes sense to optimize
@@ -145,6 +153,11 @@ class CommandRouterService extends ReactHandlerService {
         const { evt } = req.params();
         const { name } = evt;
         const ccm = req.ccm();
+
+        ccm.log().debug(
+            `CommandRouter:E ${evt.server}:${evt.channel || ''}:${evt.name} ` +
+            JSON.stringify( evt.data )
+        );
 
         for ( let cn of this._catch_all ) {
             // NOTE: makes sense to optimize
