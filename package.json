@@ -38,19 +38,19 @@
     "email": "support@futoin.org"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "futoin-asyncsteps": "^2.5.2",
-    "futoin-executor": "^2.3.5",
-    "futoin-invoker": "^2.4.6",
-    "grunt": "^1.3.0",
+    "chai": "^4.3.4",
+    "futoin-asyncsteps": "^2.5.3",
+    "futoin-executor": "^2.3.6",
+    "futoin-invoker": "^2.4.8",
+    "grunt": "^1.4.1",
     "grunt-eslint": "^23.0.0",
-    "grunt-jsdoc-to-markdown": "^5.0.0",
+    "grunt-jsdoc-to-markdown": "^6.0.0",
     "grunt-simple-nyc": "^3.0.1",
     "grunt-text-replace": "^0.4.0",
-    "mocha": "^8.2.1"
+    "mocha": "^9.0.3"
   },
   "dependencies": {
-    "@futoin/log": "^1.1.2",
+    "@futoin/log": "^1.1.3",
     "@futoin/specs": ">=2019.1104.0"
   },
   "peerDependencies": {
