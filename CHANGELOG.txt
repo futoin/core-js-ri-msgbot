@@ -1,4 +1,4 @@
-=== (next) ===
+=== 0.3.3 (2021-08-14) ===
 CHANGED: dependency maintenance
 
 === 0.3.2 (2021-01-31) ===
